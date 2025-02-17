@@ -8,14 +8,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.time.LocalDate;
 
 @Controller
-public class CustomerController {
+public class RegisterController {
     @Autowired
     private CustomerRepository customerRepository;
 
-    @RequestMapping("/")
-    public String index() {
-        return "index";
-    }
     @RequestMapping("/registerAccount")
     public String register() {
         return "register";
@@ -46,6 +42,6 @@ public class CustomerController {
         customerRepository.save(customer);
 
         // Redirect to index page
-        return "redirect:/index";
+        return "redirect:/";
     }
 }
