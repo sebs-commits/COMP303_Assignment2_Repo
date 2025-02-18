@@ -1,4 +1,4 @@
-package com.example.sebastian_301241956_assignment2;
+package com.example.sebastian_301241956_assignment2.customer;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

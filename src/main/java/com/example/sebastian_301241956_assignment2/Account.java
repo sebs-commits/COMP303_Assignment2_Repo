@@ -1,5 +1,6 @@
 package com.example.sebastian_301241956_assignment2;
 
+import com.example.sebastian_301241956_assignment2.customer.Customer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

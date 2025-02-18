@@ -1,6 +1,6 @@
 package com.example.sebastian_301241956_assignment2.login;
 
-import com.example.sebastian_301241956_assignment2.Customer;
+import com.example.sebastian_301241956_assignment2.customer.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
