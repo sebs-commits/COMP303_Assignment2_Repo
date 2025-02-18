@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Login</title>
 </head>
 <body>
-$END$
+<h2>Login</h2>
+
+<div th:if="${param.error}" style="color: red;">
+    Invalid username or password.
+</div>
+
+<form th:action="@{/login}" method="post">
+    <div>
+        <input type="text" name="username" placeholder="Username" required>
+    </div>
+    <div>
+        <input type="password" name="password" placeholder="Password" required>
+    </div>
+    <button type="submit">Login</button>
+</form>
+<a href="/registerAccount"><button>If you don't have an account, click here.</button></a>
 </body>
 </html>
