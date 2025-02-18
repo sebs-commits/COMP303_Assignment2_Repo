@@ -1,5 +1,7 @@
-package com.example.sebastian_301241956_assignment2;
+package com.example.sebastian_301241956_assignment2.register;
 
+import com.example.sebastian_301241956_assignment2.Customer;
+import com.example.sebastian_301241956_assignment2.login.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +12,7 @@ import java.time.LocalDate;
 @Controller
 public class RegisterController {
     @Autowired
-    private CustomerRepository customerRepository;
+    private RegisterRepository registerRepository;
 
     @RequestMapping("/registerAccount")
     public String register() {
@@ -39,7 +41,7 @@ public class RegisterController {
         customer.setEmail(email);
         customer.setPhone(phone);
 
-        customerRepository.save(customer);
+        registerRepository.save(customer);
 
         // Redirect to index page
         return "redirect:/";
