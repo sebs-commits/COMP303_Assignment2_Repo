@@ -1,10 +1,12 @@
 package com.example.sebastian_301241956_assignment2.login;
 
 import com.example.sebastian_301241956_assignment2.customer.Customer;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class LoginController {
@@ -12,13 +14,18 @@ public class LoginController {
     private LoginRepository loginRepository;
     @PostMapping("/login")
     public String login(@RequestParam("username") String username,
-                        @RequestParam("password") String password) {
+                        @RequestParam("password") String password,
+                        HttpSession session) {
                         Customer customer = loginRepository.findByUsername(username);
 
+
             if (customer != null && customer.getPassword().equals(password)) {
+                // Gotta store the customer ID for the session
+                session.setAttribute("customerId", customer.getCustomerId());
                 return "redirect:/home";
             } else {
                 return "redirect:/login?error";
             }
     }
 }
+
