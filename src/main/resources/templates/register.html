@@ -3,59 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/lux/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-  <h1>Create an Account</h1>
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <h1 class="text-center mb-4 fw-light">Create an Account</h1>
 
+            <form th:action="@{/register}" method="post" class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <!-- Username section -->
+                    <div class="form-group mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                        <div th:if="${usernameError}" class="alert alert-danger mt-2" role="alert">
+                            <p th:text="${usernameError}" class="mb-0"></p>
+                        </div>
+                    </div>
 
-  <form th:action="@{/register}" method="post">
-      <div th:if="${usernameError}" style="color: red;">
-          <p th:text="${usernameError}"></p>
-      </div>
-      <label>
-          <input type="text" name="username" placeholder="Username" required>
-      </label>
+                    <!-- Password section -->
+                    <div class="form-group mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                        <div th:if="${passwordError}" class="alert alert-danger mt-2" role="alert">
+                            <p th:text="${passwordError}" class="mb-0"></p>
+                        </div>
+                    </div>
 
-      <div th:if="${passwordError}" style="color: red;">
-          <p th:text="${passwordError}"></p>
-      </div>
-      <label>
-          <input type="password" name="password" placeholder="Password" required>
-      </label>
+                    <!-- Personal information -->
+                    <div class="form-group mb-3">
+                        <label for="customerName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="customerName" name="customerName">
+                    </div>
 
-      <label>
-          <input type="text" name="customerName" placeholder="Full Name">
-      </label>
+                    <div class="form-group mb-3">
+                        <label for="dob" class="form-label">Date of Birth</label>
+                        <input type="date" class="form-control" id="dob" name="dob" required>
+                        <div th:if="${dobError}" class="alert alert-danger mt-2" role="alert">
+                            <p th:text="${dobError}" class="mb-0"></p>
+                        </div>
+                    </div>
 
-      <div th:if="${dobError}" style="color: red;">
-          <p th:text="${dobError}"></p>
-      </div>
-      <label>
-          <input type="date" name="dob" placeholder="Date of Birth" required>
-      </label>
+                    <!-- Address sec -->
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="address" name="address">
+                        </div>
+                        <div class="col-md-8 mb-3">
+                            <label for="city" class="form-label">City</label>
+                            <input type="text" class="form-control" id="city" name="city">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="postalCode" class="form-label">Postal Code</label>
+                            <input type="text" class="form-control" id="postalCode" name="postalCode">
+                        </div>
+                    </div>
 
-      <label>
-          <input type="text" name="address" placeholder="Address">
-      </label>
-      <label>
-          <input type="text" name="city" placeholder="City">
-      </label>
-      <label>
-          <input type="text" name="postalCode" placeholder="Postal Code">
-      </label>
+                    <!-- Contact section -->
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                        <div th:if="${emailError}" class="alert alert-danger mt-2" role="alert">
+                            <p th:text="${emailError}" class="mb-0"></p>
+                        </div>
+                    </div>
 
-      <div th:if="${emailError}" style="color: red;">
-          <p th:text="${emailError}"></p>
-      </div>
-      <label>
-          <input type="email" name="email" placeholder="Email" required>
-      </label>
+                    <div class="form-group mb-4">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="phone" name="phone">
+                    </div>
 
-      <label>
-          <input type="text" name="phone" placeholder="Phone">
-      </label>
-      <button type="submit">Register</button>
-  </form>
-
+                    <!-- Submit btn -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Create Account</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
