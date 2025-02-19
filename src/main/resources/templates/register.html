@@ -7,16 +7,53 @@
 <body>
   <h1>Create an Account</h1>
 
+
   <form th:action="@{/register}" method="post">
-      <input type="text" name="username" placeholder="Username">
-      <input type="password" name="password" placeholder="Password">
-      <input type="text" name="customerName" placeholder="Full Name">
-      <input type="date" name="dob" placeholder="Date of Birth">
-      <input type="text" name="address" placeholder="Address">
-      <input type="text" name="city" placeholder="City">
-      <input type="text" name="postalCode" placeholder="Postal Code">
-      <input type="email" name="email" placeholder="Email">
-      <input type="text" name="phone" placeholder="Phone">
+      <div th:if="${usernameError}" style="color: red;">
+          <p th:text="${usernameError}"></p>
+      </div>
+      <label>
+          <input type="text" name="username" placeholder="Username" required>
+      </label>
+
+      <div th:if="${passwordError}" style="color: red;">
+          <p th:text="${passwordError}"></p>
+      </div>
+      <label>
+          <input type="password" name="password" placeholder="Password" required>
+      </label>
+
+      <label>
+          <input type="text" name="customerName" placeholder="Full Name">
+      </label>
+
+      <div th:if="${dobError}" style="color: red;">
+          <p th:text="${dobError}"></p>
+      </div>
+      <label>
+          <input type="date" name="dob" placeholder="Date of Birth" required>
+      </label>
+
+      <label>
+          <input type="text" name="address" placeholder="Address">
+      </label>
+      <label>
+          <input type="text" name="city" placeholder="City">
+      </label>
+      <label>
+          <input type="text" name="postalCode" placeholder="Postal Code">
+      </label>
+
+      <div th:if="${emailError}" style="color: red;">
+          <p th:text="${emailError}"></p>
+      </div>
+      <label>
+          <input type="email" name="email" placeholder="Email" required>
+      </label>
+
+      <label>
+          <input type="text" name="phone" placeholder="Phone">
+      </label>
       <button type="submit">Register</button>
   </form>
 
