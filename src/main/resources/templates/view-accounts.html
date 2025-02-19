@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h2>Your Accounts</h2>
+  <!-- If account is empty display this-->
+  <div th:if="${accounts.empty}">
+    <p>You don't have any accounts yet.</p>
+  </div>
+<!-- If account is not empty display this-->
+  <div th:if="${!accounts.empty}">
+    <table>
+      <thead>
+      <tr>
+        <th>Account Number</th>
+        <th>Account Type</th>
+        <th>Balance</th>
+        <th>Overdraft Limit</th>
+        <th>Minimum Balance Required</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="account : ${accounts}">
+        <td th:text="${account.accountNumber}"></td>
+        <td th:text="${account.accountType.accountTypeName}"></td>
+        <td th:text="'$' + ${account.balance}"></td>
+        <td th:text="'$' + ${account.overDraftLimit}"></td>
+        <td th:text="'$' + ${account.accountType.minimumBalance}"></td>
+        <td>
+          <form th:action="@{/accounts/deposit}" method="post">
+            <input type="hidden" name="accountNumber" th:value="${account.accountNumber}">
+            <input type="number" name="amount" step="0.01" min="0.01" required placeholder="Amount">
+            <button type="submit">Deposit</button>
+          </form>
+        </td>
+        <td>
+          <form th:action="@{/accounts/withdraw}" method="post">
+            <input type="hidden" name="accountNumber" th:value="${account.accountNumber}">
+            <input type="number" name="amount" step="0.01" min="0.01" required placeholder="Amount">
+            <button type="submit">Withdraw</button>
+          </form>
+        </td>
+        <td>
+          <form th:action="@{/accounts/delete}" method="post" onsubmit="return confirm('Are you sure you want to delete this account? Withdraw money first!');">
+            <input type="hidden" name="accountNumber" th:value="${account.accountNumber}">
+
+            <button type="submit" th:disabled="${account.balance != 0}">Delete Account</button>
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <br>
+  <a th:href="@{/home}">Back to Home</a>
+
+</body>
+</html>

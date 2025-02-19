@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Account Types</title>
 </head>
 <body>
-$END$
+    <h2>Available Account Types</h2>
+
+    <div th:each="type : ${accountTypes}">
+        <div>
+            <h3 th:text="${type.accountTypeName}"></h3>
+            <p th:text="${type.accountTypeDescription}"></p>
+            <p th:text="'Minimum Balance: $' + ${type.minimumBalance}"></p>
+            <p th:text="'Overdraft Available: ' + (${type.hasOverdraft} ? 'Yes' : 'No')"></p>
+        </div>
+        <hr>
+    </div>
+
+    <a th:href="@{/home}">Back to Home</a>
 </body>
 </html>
