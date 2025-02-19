@@ -1,5 +1,6 @@
-package com.example.sebastian_301241956_assignment2;
+package com.example.sebastian_301241956_assignment2.account;
 
+import com.example.sebastian_301241956_assignment2.account.type.AccountType;
 import com.example.sebastian_301241956_assignment2.customer.Customer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "account_type")
+@Table(name = "account")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,4 +32,5 @@ public class Account {
 
     @Column(name = "over_draft_limit")
     private BigDecimal overDraftLimit;
+
 }
