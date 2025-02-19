@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Account</title>
+</head>
+<body>
+    <h2>Add New Account</h2>
+
+    <form th:action="@{/account/add}" method="post">
+        <div>
+            <label for="accountType">Select account type:</label>
+            <select id="accountType" name="accountTypeId" required>
+                <option value="">-- Select an account type --</option>
+                <option th:each="type : ${accountTypes}"
+                        th:value="${type.accountTypeId}"
+                        th:text="${type.accountTypeName + ' - ' + type.accountTypeDescription}">
+                </option>
+            </select>
+        </div>
+
+        <div th:each="type : ${accountTypes}" th:id="'details-' + ${type.accountTypeId}"
+             style="display: none;" class="account-details">
+            <p>Minimum Balance Required: $<span th:text="${type.minimumBalance}"></span></p>
+            <p>Overdraft Available: <span th:text="${type.hasOverdraft ? 'Yes' : 'No'}"></span></p>
+        </div>
+
+        <button type="submit">Create Account</button>
+    </form>
+
+    <a th:href="@{/home}">Back to home</a>
+
+    <script>
+        document.getElementById('accountType').addEventListener('change', function() {
+            // Hide all details
+            document.querySelectorAll('.account-details').forEach(div => {
+                div.style.display = 'none';
+            });
+
+            // Show selected account type details
+            const selectedId = this.value;
+            if (selectedId) {
+                document.getElementById('details-' + selectedId).style.display = 'block';
+            }
+        });
+    </script>
+
+</body>
+</html>
