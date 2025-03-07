@@ -7,22 +7,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/lux/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container d-flex align-items-center justify-content-center min-vh-100">
-    <div class="d-grid gap-3" style="width: 250px;">
-        <a href="/editInformation" class="btn btn-outline-primary p-3">
-            <i class="bi bi-person-lines-fill me-2"></i>Personal Info
-        </a>
-        <a href="/accountTypes" class="btn btn-outline-primary p-3">
-            <i class="bi bi-card-list me-2"></i>Account Types
-        </a>
-        <a href="/account/add" class="btn btn-outline-primary p-3">
-            <i class="bi bi-plus-circle me-2"></i>Add Account
-        </a>
-        <a href="/accounts/view" class="btn btn-outline-primary p-3">
-            <i class="bi bi-bank me-2"></i>View Accounts
-        </a>
+    <div class="container d-flex align-items-center justify-content-center min-vh-100">
+        <div class="d-grid gap-3" style="width: 250px;">
+            <a href="/editInformation" class="btn btn-outline-primary p-3">
+                <i class="bi bi-person-lines-fill me-2"></i>Personal Info
+            </a>
+            <a href="/accountTypes" class="btn btn-outline-primary p-3">
+                <i class="bi bi-card-list me-2"></i>Account Types
+            </a>
+            <a href="/account/add" class="btn btn-outline-primary p-3">
+                <i class="bi bi-plus-circle me-2"></i>Add Account
+            </a>
+            <a href="/accounts/view" class="btn btn-outline-primary p-3">
+                <i class="bi bi-bank me-2"></i>View Accounts
+            </a>
+            <a th:href="@{/login}" class="btn btn-outline-danger">Logout</a>
+        </div>
     </div>
-</div>
 </body>
 </html>
 
