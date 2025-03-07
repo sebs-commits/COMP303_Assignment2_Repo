@@ -41,6 +41,9 @@ public class LoginController {
                 if (customer != null && customer.getPassword().equals(password)) {
                     // Gotta store the customer ID for the session
                     session.setAttribute("customerId", customer.getCustomerId());
+                    if("admin".equals(username)){
+                        return "redirect:/admin";
+                    }
                     return "redirect:/home";
                 } else {
                     redirectAttributes.addFlashAttribute("error", "Invalid username or password.");
